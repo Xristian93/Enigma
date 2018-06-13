@@ -1,33 +1,62 @@
 
 /**
- * Write a description of class MecanismoOffset here.
+ * Clase MecanismoOffset.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Cristian de la Fuente)
+ * @version (13/06/2018)
  */
-public class MecanismoOffset
+public class MecanismoOffset extends Mecanismo
 {
-    // instance variables - replace the example below with your own
-    private int x;
 
     /**
-     * Constructor for objects of class MecanismoOffset
+     * Constructor de la clase MecanismoOffset
+     * 
+     * @param  clave  La clave del mecanismo
      */
-    public MecanismoOffset()
+    public MecanismoOffset(int clave)
     {
-        // initialise instance variables
-        x = 0;
+        super(clave);
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Metodo para encriptar por offset
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param  num  El numero a encriptar
+     * @return    el numero encriptado
      */
-    public int sampleMethod(int y)
+    @Override
+    public int encriptar(int num)
     {
-        // put your code here
-        return x + y;
+        String cadenaNumero = "" + num;
+        String cadenaADevolver = cadenaNumero.substring(0,1);
+        for (int i = 1; i < cadenaNumero.length(); i++){
+            int numeroPosicion = Integer.parseInt(cadenaNumero.substring(i,i+1)) + getClave();
+            if (numeroPosicion > 10){
+                numeroPosicion -= 10;
+            }
+            cadenaADevolver += numeroPosicion;
+        }
+        return Integer.parseInt(cadenaADevolver);
+    }
+    
+    /**
+     * Metodo para desencriptar por offset
+     *
+     * @param  num  El numero a desencriptar
+     * @return    el numero desencriptado
+     */
+    @Override
+    public int desencriptar(int num)
+    {
+        String cadenaNumero = "" + num;
+        String cadenaADevolver = cadenaNumero.substring(0,1);
+        for (int i = 1; i < cadenaNumero.length(); i++){
+            int numeroPosicion = Integer.parseInt(cadenaNumero.substring(i,i+1)) - getClave();
+            if (numeroPosicion < 0){
+                numeroPosicion += 10;
+            }
+            cadenaADevolver += numeroPosicion;
+        }
+        return Integer.parseInt(cadenaADevolver);
     }
 }

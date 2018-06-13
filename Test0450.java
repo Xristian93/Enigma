@@ -53,7 +53,7 @@ public class Test0450
         assertEquals(9000,  enigma.desencripta(mecanismo01, 63000));              
         assertEquals(-1,  enigma.desencripta(mecanismo01, 70)); 
     }
-    /**
+    
     @Test
     public void testCommit02()
     {
@@ -67,7 +67,8 @@ public class Test0450
         assertEquals(9943,  enigma.desencripta(mecanismo02, 9165));
         assertEquals(-1,  enigma.desencripta(mecanismo02, 12));
     }
-
+    
+    /**
     @Test
     public void testCommit03()
     {

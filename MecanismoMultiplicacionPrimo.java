@@ -10,6 +10,8 @@ public class MecanismoMultiplicacionPrimo extends Mecanismo
 
     /**
      * Constructor de la clase MecanismoMultiplicacionPrimo
+     * 
+     * @param  clave  La clave del mecanismo
      */
     public MecanismoMultiplicacionPrimo(int clave)
     {
